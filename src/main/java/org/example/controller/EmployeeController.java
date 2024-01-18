@@ -41,4 +41,23 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Employee> deleteEmployeeBy(@PathVariable Long id)
+    {
+        try {
+            Employee employee = employeeService.deleteEmployee(id);
+            return ResponseEntity.ok(employee);
+        }
+        catch (EmployeeNotFoundException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public Employee updateEmployeeBy(@RequestBody Employee employee){
+        return employeeService.updatebyId(employee);
+
+    }
+
 }

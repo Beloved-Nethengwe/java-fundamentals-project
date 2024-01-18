@@ -1,6 +1,8 @@
 package org.example.service;
 
 import org.example.enums.Status;
+import org.example.model.dto.TaskDto;
+import org.example.model.entity.Employee;
 import org.example.model.entity.Task;
 
 import java.util.List;
@@ -8,12 +10,14 @@ import java.util.List;
 public interface TaskService {
     List<Task> getAllTasks();
 
-    Task addTask(Task task);
+    Task addTask(TaskDto task);
 
-    List<Task> getTask(Long employeeId, Status status);
+    Task deleteEmployee(Long id);
 
-    List<Task> getTask(Long employeeId);
+    Task updatebyId(Task task);
 
-    List<Task> getTasks();
+    List<Task> findAllByStatus(Status status);
+
+
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class EmployeeServiceImpl implements EmployeeService {
     
     private final EmployeeRepository employeeRepository;
@@ -36,7 +37,30 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee deleteEmployee(Long id) {
+        Employee employeeToDelete = employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException("Employee not found with id: " + id));
+
+        if (employeeToDelete!=null){
+            employeeRepository.deleteById(id);
+
+            return employeeToDelete;
+        }
+        else {
+
+            throw new EmployeeNotFoundException("Employee not found with id: " + id);
+        }
+
+    }
+
+    @Override
     public Employee findbyId(Long id) {
         return employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException("Employee not found with id: " + id));
     }
+
+    @Override
+    public Employee updatebyId(Employee employee ) {
+        return employeeRepository.save( employee);
+    }
+
+
 }
