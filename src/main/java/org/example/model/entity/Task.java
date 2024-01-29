@@ -13,7 +13,7 @@ import org.example.model.dto.TaskDto;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class Task {
 
     public Task(TaskDto taskDto) {

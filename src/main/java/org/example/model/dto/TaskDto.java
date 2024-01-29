@@ -10,9 +10,11 @@ import org.example.enums.Status;
 @Setter
 @NoArgsConstructor
 public class TaskDto {
+
     private Long id;
 
     private String description;
 
     private Status status;
+
 }
